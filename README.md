@@ -1,4 +1,4 @@
-Recreation of the 'mystify' screensaver from Windows XP
+Recreation of the original mystify screensaver from Windows XP
 
 
 ![mystify1](https://user-images.githubusercontent.com/11184076/152664092-82373000-3e5a-4fe5-a56f-b647682b940c.jpg)
