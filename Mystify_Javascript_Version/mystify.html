@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>mystify in javascript</title>
+  <meta name="author" content="matt ronan">
+
+  <link rel="stylesheet" href="css/main.css">
+  <script type = "text/javascript" defer src = "js/PVector.js"></script>
+  <script type = "text/javascript" defer src = "js/main.js"></script>
+  
+</head>
+
+<body >
+	<div id = "toolbar">
+		<input id="bM" type="checkbox"  onload = "resetChecks('bM')" onclick = "checkBoxManager('bM')">Blur<br>
+		<input id="pau" type="checkbox" onload = "resetChecks('pau')" onclick = "checkBoxManager('pau')">Pause<br>
+		<input id="deb" type="checkbox" onload = "resetChecks('deb')" onclick = "checkBoxManager('deb')">Debug<br>
+	</div>   
+
+	<canvas id="mystify" width="800" height="600" ></canvas>
+	
+	<a id = "debug"> </a>
+
+	
+</body>
+
+</html>
