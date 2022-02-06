@@ -1,4 +1,5 @@
 Recreation of the 'mystify' screensaver from Windows XP
 
 
-![mystify](https://user-images.githubusercontent.com/11184076/152663954-60f63ae6-f3d7-4e18-a979-7b372ac1e279.jpg)
+
+![mystify](https://user-images.githubusercontent.com/11184076/152663997-84ae6127-f0f9-4575-812a-345b236cbabb.jpg)
