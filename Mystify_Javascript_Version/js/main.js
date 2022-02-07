@@ -31,16 +31,16 @@ ColorFader.prototype.init = function(){
 
 ColorFader.prototype.update = function(){
     if(this.vals[this.ind] < 255){
-		this.vals[this.ind] += this.fadeSpeed;
-		if(this.ind == 0)
-			this.vals[2] -= this.fadeSpeed;   
-		else
-			this.vals[this.ind-1] -= this.fadeSpeed;
+	this.vals[this.ind] += this.fadeSpeed;
+	if(this.ind == 0)
+		this.vals[2] -= this.fadeSpeed;   
+	else
+		this.vals[this.ind-1] -= this.fadeSpeed;
     }
     else{
-		this.ind++;
-		if(this.ind > 2)
-			this.ind = 0;
+	this.ind++;
+	if(this.ind > 2)
+		this.ind = 0;
     }
 }
 
@@ -67,16 +67,16 @@ Thing.prototype.init = function(){
     for(var i = 0; i < this.numLines; i++){
 	    this.pointLoc[i] = [];
         for(var ii = 0; ii < this.numPoints; ii++){
-			if(i == 0){
-				this.pointLoc[i][ii] = new PVector(Math.random()*mystify.width,Math.random()*mystify.height); 
-				this.pointVel[ii] = new PVector(0,0);
-				this.pointVel[ii].x = Math.random()*this.rRange+this.minV; this.pointVel[ii].y = Math.random()*this.rRange+this.minV;
-			}
-			else{
-				this.pointLoc[i][ii] = new PVector(0,0);
-				this.pointLoc[i][ii].x = this.pointLoc[0][ii].x;//start all the blur lines in the same place
-				this.pointLoc[i][ii].y = this.pointLoc[0][ii].y;
-			}
+		if(i == 0){
+			this.pointLoc[i][ii] = new PVector(Math.random()*mystify.width,Math.random()*mystify.height); 
+			this.pointVel[ii] = new PVector(0,0);
+			this.pointVel[ii].x = Math.random()*this.rRange+this.minV; this.pointVel[ii].y = Math.random()*this.rRange+this.minV;
+		}
+		else{
+			this.pointLoc[i][ii] = new PVector(0,0);
+			this.pointLoc[i][ii].x = this.pointLoc[0][ii].x;//start all the blur lines in the same place
+			this.pointLoc[i][ii].y = this.pointLoc[0][ii].y;
+		}
         }
     } 
 }
@@ -99,8 +99,8 @@ Thing.prototype.update = function(){
     //now shift the location array to the right
     for(var i = this.numLines-1; i > 0; i--){
         for(var ii = 0; ii < this.numPoints; ii++){
-			this.pointLoc[i][ii].x = this.pointLoc[i-1][ii].x;this.pointLoc[i][ii].y = this.pointLoc[i-1][ii].y;
-		}
+		this.pointLoc[i][ii].x = this.pointLoc[i-1][ii].x;this.pointLoc[i][ii].y = this.pointLoc[i-1][ii].y;
+	}
     }
 } 
 
@@ -108,13 +108,13 @@ Thing.prototype.checkWallCollisions = function(i){
     //l r t b
 	
     if(this.pointLoc[0][i].x < 0)
-		this.pointVel[i].x = Math.random()*this.rRange+this.minV;
+	this.pointVel[i].x = Math.random()*this.rRange+this.minV;
     else if(this.pointLoc[0][i].x > mystify.width)
-		this.pointVel[i].x = -1*(Math.random()*this.rRange+this.minV);
+	this.pointVel[i].x = -1*(Math.random()*this.rRange+this.minV);
     if(this.pointLoc[0][i].y < 0)
-		this.pointVel[i].y = Math.random()*this.rRange+this.minV;
+	this.pointVel[i].y = Math.random()*this.rRange+this.minV;
     else if(this.pointLoc[0][i].y > mystify.height)
-		this.pointVel[i].y = -1*(Math.random()*this.rRange+this.minV);
+	this.pointVel[i].y = -1*(Math.random()*this.rRange+this.minV);
 }
 Thing.prototype.drawThing = function(){
     this.colorFader.update();
@@ -122,14 +122,14 @@ Thing.prototype.drawThing = function(){
 	mystify.context.beginPath();
 	mystify.context.strokeStyle = this.col;
     for(var i = 0; i < this.numLines; i++){
-		mystify.context.moveTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
-		for(var ii = 1; ii < this.numPoints; ii++){
-			mystify.context.lineTo(this.pointLoc[i][ii].x,this.pointLoc[i][ii].y);
-			mystify.context.moveTo(this.pointLoc[i][ii].x,this.pointLoc[i][ii].y);
-		}
-		mystify.context.lineTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
-		mystify.context.stroke();
-		//mystify.context.endPath();
+	mystify.context.moveTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
+	for(var ii = 1; ii < this.numPoints; ii++){
+		mystify.context.lineTo(this.pointLoc[i][ii].x,this.pointLoc[i][ii].y);
+		mystify.context.moveTo(this.pointLoc[i][ii].x,this.pointLoc[i][ii].y);
+	}
+	mystify.context.lineTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
+	mystify.context.stroke();
+	//mystify.context.endPath();
     }
 }
 //-----------------------------end Thing----------------------------------------
