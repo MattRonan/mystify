@@ -1,4 +1,6 @@
-//mystify screensaver in javascript 2016 Matt Ronan 
+/* Recreation of the classic 'mystify' screensaver from Windows XP in Javascript
+ * 2017 Matt Ronan
+*/
 
 //--------------------------Mystify----------------------
 function Mystify() {
