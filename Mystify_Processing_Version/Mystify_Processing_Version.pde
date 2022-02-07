@@ -1,8 +1,9 @@
-/*Recreation of the classic 'mystify' screensaver from Windows XP in Processing
+/* Recreation of the classic 'mystify' screensaver from Windows XP in Processing
 /* 2017 Matt Ronan
 /*
-/*'p' to pause
-/*'m' to toggle blur mode
+/* 'p' to pause
+/* 'm' to toggle blur mode
+/* (click inside window first)
 */
 
 Thing thing1;
