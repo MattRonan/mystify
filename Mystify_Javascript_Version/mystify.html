@@ -1,9 +1,3 @@
-<!--
-/* Recreation of the classic 'mystify' screensaver from Windows XP in Javascript
- * 2017 Matt Ronan
-*/
--->
-
 <!doctype html>
 
 <html lang="en">
@@ -16,21 +10,21 @@
   <link rel="stylesheet" href="css/main.css">
   <script type = "text/javascript" defer src = "js/PVector.js"></script>
   <script type = "text/javascript" defer src = "js/main.js"></script>
-  
+
 </head>
 
 <body >
-	<div id = "toolbar">
-		<input id="bM" type="checkbox"  onload = "resetChecks('bM')" onclick = "checkBoxManager('bM')">Blur<br>
-		<input id="pau" type="checkbox" onload = "resetChecks('pau')" onclick = "checkBoxManager('pau')">Pause<br>
-		<input id="deb" type="checkbox" onload = "resetChecks('deb')" onclick = "checkBoxManager('deb')">Debug<br>
-	</div>   
+  <div id = "toolbar">
+    <input id="bM" type="checkbox"  onload = "resetChecks('bM')" onclick = "checkBoxManager('bM')">Blur<br>
+    <input id="pau" type="checkbox" onload = "resetChecks('pau')" onclick = "checkBoxManager('pau')">Pause<br>
+    <input id="deb" type="checkbox" onload = "resetChecks('deb')" onclick = "checkBoxManager('deb')">Debug<br>
+  </div>   
 
-	<canvas id="mystify" width="800" height="600" ></canvas>
-	
-	<a id = "debug"> </a>
+  <canvas id="mystify" width="800" height="600" ></canvas>
 
-	
+  <a id = "debug"> </a>
+
+
 </body>
 
 </html>
