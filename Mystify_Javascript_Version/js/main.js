@@ -15,7 +15,8 @@ function ColorFader() {
   this.vals = [0,255,0];
   this.ind = 1;
   this.fadeSpeed = 1;
-}  
+} 
+ 
 ColorFader.prototype.init = function(){
   this.ran =.3;//= Math.random();
   if(this.ran < .33)
@@ -112,6 +113,7 @@ Thing.prototype.checkWallCollisions = function(i){
   else if(this.pointLoc[0][i].y > mystify.height)
     this.pointVel[i].y = -1*(Math.random()*this.rRange+this.minV);
 }
+
 Thing.prototype.drawThing = function(){
   this.colorFader.update();
   this.col = this.colorFader.getColor();
