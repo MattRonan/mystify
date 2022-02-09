@@ -28,18 +28,18 @@ ColorFader.prototype.init = function(){
 }
 
 ColorFader.prototype.update = function(){
-    if(this.vals[this.ind] < 255){
+  if(this.vals[this.ind] < 255){
     this.vals[this.ind] += this.fadeSpeed;
     if(this.ind == 0)
       this.vals[2] -= this.fadeSpeed;   
     else
       this.vals[this.ind-1] -= this.fadeSpeed;
-    }
-    else{
+  }
+  else{
     this.ind++;
     if(this.ind > 2)
       this.ind = 0;
-    }
+  }
 }
 
 ColorFader.prototype.getColor = function(){
@@ -49,7 +49,6 @@ ColorFader.prototype.getColor = function(){
 
 //----------------------------Thing------------------------------
 function Thing(){
-  
   this.numPoints = 4;
   this.numLines = 7;
   this.minV = 2; this.maxV = 10;
@@ -62,9 +61,9 @@ function Thing(){
 }
 
 Thing.prototype.init = function(){
-    for(var i = 0; i < this.numLines; i++){
-      this.pointLoc[i] = [];
-        for(var ii = 0; ii < this.numPoints; ii++){
+  for(var i = 0; i < this.numLines; i++){
+    this.pointLoc[i] = [];
+    for(var ii = 0; ii < this.numPoints; ii++){
       if(i == 0){
         this.pointLoc[i][ii] = new PVector(Math.random()*mystify.width,Math.random()*mystify.height); 
         this.pointVel[ii] = new PVector(0,0);
@@ -75,8 +74,8 @@ Thing.prototype.init = function(){
         this.pointLoc[i][ii].x = this.pointLoc[0][ii].x;//start all the blur lines in the same place
         this.pointLoc[i][ii].y = this.pointLoc[0][ii].y;
       }
-        }
-    } 
+    }
+  } 
 }
 
 Thing.prototype.update = function(){
@@ -87,39 +86,38 @@ Thing.prototype.update = function(){
   }
     
   //only add velocity to the first (leading) points.  All the others are just copies of previous points
-    for(var i = 0; i < this.numPoints; i++){
+  for(var i = 0; i < this.numPoints; i++){
     this.pointLoc[0][i].add(this.pointVel[i]); 
     this.checkWallCollisions(i);
-    }
-    
-    this.drawThing();
+  }
   
-    //now shift the location array to the right
-    for(var i = this.numLines-1; i > 0; i--){
-        for(var ii = 0; ii < this.numPoints; ii++){
+  this.drawThing();
+
+  //now shift the location array to the right
+  for(var i = this.numLines-1; i > 0; i--){
+    for(var ii = 0; ii < this.numPoints; ii++){
       this.pointLoc[i][ii].x = this.pointLoc[i-1][ii].x;this.pointLoc[i][ii].y = this.pointLoc[i-1][ii].y;
     }
-    }
+  }
 } 
 
 Thing.prototype.checkWallCollisions = function(i){
-    //l r t b
-  
-    if(this.pointLoc[0][i].x < 0)
+  //l r t b
+  if(this.pointLoc[0][i].x < 0)
     this.pointVel[i].x = Math.random()*this.rRange+this.minV;
-    else if(this.pointLoc[0][i].x > mystify.width)
+  else if(this.pointLoc[0][i].x > mystify.width)
     this.pointVel[i].x = -1*(Math.random()*this.rRange+this.minV);
-    if(this.pointLoc[0][i].y < 0)
+  if(this.pointLoc[0][i].y < 0)
     this.pointVel[i].y = Math.random()*this.rRange+this.minV;
-    else if(this.pointLoc[0][i].y > mystify.height)
+  else if(this.pointLoc[0][i].y > mystify.height)
     this.pointVel[i].y = -1*(Math.random()*this.rRange+this.minV);
 }
 Thing.prototype.drawThing = function(){
-    this.colorFader.update();
+  this.colorFader.update();
   this.col = this.colorFader.getColor();
   mystify.context.beginPath();
   mystify.context.strokeStyle = this.col;
-    for(var i = 0; i < this.numLines; i++){
+  for(var i = 0; i < this.numLines; i++){
     mystify.context.moveTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
     for(var ii = 1; ii < this.numPoints; ii++){
       mystify.context.lineTo(this.pointLoc[i][ii].x,this.pointLoc[i][ii].y);
@@ -128,14 +126,12 @@ Thing.prototype.drawThing = function(){
     mystify.context.lineTo(this.pointLoc[i][0].x,this.pointLoc[i][0].y);
     mystify.context.stroke();
     //mystify.context.endPath();
-    }
+  }
 }
 //-----------------------------end Thing----------------------------------------
 
 function loop() {
-
-  //BG
-  if(mystify.paused == false){
+  if(mystify.paused == false){//BG
     if(mystify.blur == false)
       mystify.context.fillStyle = "rgb(0,0,0)"; 
     else
@@ -144,9 +140,9 @@ function loop() {
     thing1.update();
   }
 
-  //--------------------debug line---------------------
+  //--------------------debug line-----------------------------------------
   document.getElementById("debug").innerHTML = "debug: " + thing1.col + " ";
-    //--------------------------------------------------
+  //-----------------------------------------------------------------------
   
   setTimeout(loop, 33.3333);
 }
